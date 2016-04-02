@@ -99,7 +99,7 @@ void MainWindow::calculate()
     {
 
      probability[2] = probability[2] - addprob;
-     probability[3] = 1 - probability[3];
+     probability[3] = 1 - probability[2];
      if (probability[2]<0)
      {
          probability[2] = 0;
