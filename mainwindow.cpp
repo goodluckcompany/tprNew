@@ -77,7 +77,7 @@ void MainWindow::calculate()
 {
     /*Массива вероятностей события*/
     double probability[2];
-      probability[0]  =  ui->doubleSpinBox->text().toDouble(); // вероятность успеха  товара
+      probability[0]  =  ui->doubleSpinBox->value(); // вероятность успеха  товара
       probability[1] = 1 - probability[0];
 
     /*Массив возможных решений*/
@@ -88,10 +88,10 @@ void MainWindow::calculate()
     /*Массива ценности каждой альтернативы*/
     double valuation[4];
 
-    valuation[0] =  ui->doubleSpinBox_3->text().toDouble();//ценность первой альтернативы
-    valuation[1] =  ui->doubleSpinBox_4->text().toDouble();//ценность второй альтернативы
-    valuation[2] =  ui->doubleSpinBox_5->text().toDouble();//ценность третей альтернативы
-    valuation[3] =  ui->doubleSpinBox_6->text().toDouble();//ценность четвертой альтернативы
+    valuation[0] =  ui->doubleSpinBox_3->value();//ценность первой альтернативы
+    valuation[1] =  ui->doubleSpinBox_4->value();//ценность второй альтернативы
+    valuation[2] =  ui->doubleSpinBox_5->value();//ценность третей альтернативы
+    valuation[3] =  ui->doubleSpinBox_6->value();//ценность четвертой альтернативы
 
     /*Массив альтернатив*/
     Alternative * alernatives[4];
