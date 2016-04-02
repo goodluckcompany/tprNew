@@ -305,11 +305,6 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="file">
-    <property name="title">
-     <string>Файл</string>
-    </property>
-   </widget>
    <widget class="QMenu" name="test">
     <property name="title">
      <string>Тест</string>
@@ -318,7 +313,6 @@
     <addaction name="startTest2"/>
     <addaction name="startTest3"/>
    </widget>
-   <addaction name="file"/>
    <addaction name="test"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
