@@ -7,6 +7,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->pushButton,SIGNAL(clicked(bool)),this,SLOT(calculate()));
+    connect(ui->checkBox,SIGNAL(toggled(bool)),ui->doubleSpinBox_7,SLOT(setEnabled(bool)));
+    connect(ui->checkBox_2,SIGNAL(toggled(bool)),ui->doubleSpinBox_8,SLOT(setEnabled(bool)));
+    connect(ui->checkBox_3,SIGNAL(toggled(bool)),ui->doubleSpinBox_9,SLOT(setEnabled(bool)));
+
 }
 
 MainWindow::~MainWindow()
@@ -73,7 +77,7 @@ void MainWindow::calculate()
 {
     /*Массива вероятностей события*/
     double probability[2];
-      probability[0]  =  ui->lineEdit->text().toDouble(); // вероятность успеха  товара
+      probability[0]  =  ui->doubleSpinBox->text().toDouble(); // вероятность успеха  товара
       probability[1] = 1 - probability[0];
 
     /*Массив возможных решений*/
@@ -84,10 +88,10 @@ void MainWindow::calculate()
     /*Массива ценности каждой альтернативы*/
     double valuation[4];
 
-    valuation[0] =  ui->lineEdit1->text().toDouble();//ценность первой альтернативы
-    valuation[1] =  ui->lineEdit2->text().toDouble();//ценность второй альтернативы
-    valuation[2] =  ui->lineEdit3->text().toDouble();//ценность третей альтернативы
-    valuation[3] =  ui->lineEdit4->text().toDouble();//ценность четвертой альтернативы
+    valuation[0] =  ui->doubleSpinBox_3->text().toDouble();//ценность первой альтернативы
+    valuation[1] =  ui->doubleSpinBox_4->text().toDouble();//ценность второй альтернативы
+    valuation[2] =  ui->doubleSpinBox_5->text().toDouble();//ценность третей альтернативы
+    valuation[3] =  ui->doubleSpinBox_6->text().toDouble();//ценность четвертой альтернативы
 
     /*Массив альтернатив*/
     Alternative * alernatives[4];
@@ -114,7 +118,7 @@ void MainWindow::calculate()
     //Заполняем поле вывода
     ui->plainTextEdit->setPlainText(trUtf8("Было принято решение: ")+BayesianDecision->getDecision());
     ui->plainTextEdit->appendPlainText(trUtf8("Полезность решения: ")+QString::number(BayesianDecision->getUsefulness()));
-    ui->plainTextEdit2->setPlainText(trUtf8("Было принято решение: ")+MinMaxDecision->getDecision());
-    ui->plainTextEdit2->appendPlainText(trUtf8("Полезность решения: ")+QString::number(MinMaxDecision->getUsefulness()));
-    ui->plainTextEdit3->setPlainText(QString::number(UsefulnessAccurateInformation->getUsefulness()));
+    ui->plainTextEdit->appendPlainText(trUtf8("Было принято решение: ")+MinMaxDecision->getDecision());
+    ui->plainTextEdit->appendPlainText(trUtf8("Полезность решения: ")+QString::number(MinMaxDecision->getUsefulness()));
+    ui->plainTextEdit->appendPlainText(QString::number(UsefulnessAccurateInformation->getUsefulness()));
 }
