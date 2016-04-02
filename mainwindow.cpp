@@ -10,12 +10,67 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->checkBox,SIGNAL(toggled(bool)),ui->doubleSpinBox_7,SLOT(setEnabled(bool)));
     connect(ui->checkBox_2,SIGNAL(toggled(bool)),ui->doubleSpinBox_8,SLOT(setEnabled(bool)));
     connect(ui->checkBox_3,SIGNAL(toggled(bool)),ui->doubleSpinBox_9,SLOT(setEnabled(bool)));
-
+    connect(ui->action,SIGNAL(triggered(bool)),this,SLOT(setTest1()));
+    connect(ui->action_2,SIGNAL(triggered(bool)),this,SLOT(setTest2()));
+    connect(ui->action_3,SIGNAL(triggered(bool)),this,SLOT(setTest3()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+void MainWindow::setTest1()
+{
+     ui->checkBox->setChecked(false);
+     ui->checkBox_2->setChecked(false);
+     ui->checkBox_3->setChecked(false);
+     ui->checkBox->setChecked(true);
+     ui->doubleSpinBox->setValue(0.7);
+     ui->doubleSpinBox_2->setValue(0.6);
+     ui->doubleSpinBox_3->setValue(4000);
+     ui->doubleSpinBox_4->setValue(2000);
+     ui->doubleSpinBox_5->setValue(10000);
+     ui->doubleSpinBox_6->setValue(1000);
+     ui->doubleSpinBox_7->setValue(0.2);
+
+}
+void MainWindow::setTest2()
+{
+    ui->checkBox->setChecked(false);
+    ui->checkBox_2->setChecked(false);
+    ui->checkBox_3->setChecked(false);
+
+    ui->checkBox->setChecked(true);
+    ui->checkBox_2->setChecked(true);
+    ui->checkBox_3->setChecked(true);
+
+    ui->doubleSpinBox->setValue(0.5);
+    ui->doubleSpinBox_2->setValue(0.7);
+    ui->doubleSpinBox_3->setValue(5000);
+    ui->doubleSpinBox_4->setValue(3000);
+    ui->doubleSpinBox_5->setValue(10000);
+    ui->doubleSpinBox_6->setValue(500);
+    ui->doubleSpinBox_7->setValue(0.05);
+    ui->doubleSpinBox_8->setValue(0.1);
+    ui->doubleSpinBox_9->setValue(0.15);
+}
+void MainWindow::setTest3()
+{
+    ui->checkBox->setChecked(false);
+    ui->checkBox_2->setChecked(false);
+    ui->checkBox_3->setChecked(false);
+
+    ui->checkBox->setChecked(true);
+    ui->checkBox_3->setChecked(true);
+
+    ui->doubleSpinBox->setValue(0.8);
+    ui->doubleSpinBox_2->setValue(0.4);
+    ui->doubleSpinBox_3->setValue(7000);
+    ui->doubleSpinBox_4->setValue(5000);
+    ui->doubleSpinBox_5->setValue(25000);
+    ui->doubleSpinBox_6->setValue(1000);
+    ui->doubleSpinBox_7->setValue(0.20);
+    ui->doubleSpinBox_9->setValue(0.10);
 }
 
 Answer * MainWindow::calculateBayesianDecision(Alternative **_alternatives)
@@ -52,6 +107,7 @@ Answer * MainWindow::calculateMinMaxDecision(Alternative **_alternatives)
     }
 }
 
+
 Answer * MainWindow::calculateUsefulnessAccurateInformation(Alternative **_alternatives)
 {
     Alternative ** alt = _alternatives;
@@ -85,7 +141,7 @@ void MainWindow::calculate()
     probability[2] = ui->doubleSpinBox_2->value(); // вероятность успеха иновационного товара
     probability[3] = 1 - probability[2];
 
-    /*Переменная для учота дополнительный рисков*/
+    /*Переменная для учёта дополнительный рисков*/
      double addprob = 1;
 
     if(ui->doubleSpinBox_7->isEnabled())
@@ -134,6 +190,7 @@ void MainWindow::calculate()
 
     //неуспешное вложение в иновационный товар
     alernatives[3] = new Alternative(decisions[1],probability[3],valuation[3]);
+
 
 
     //Произодим расчет Байесовского решения

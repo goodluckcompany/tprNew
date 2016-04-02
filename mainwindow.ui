@@ -309,24 +309,24 @@
     <property name="title">
      <string>Тест</string>
     </property>
-    <addaction name="startTest1"/>
-    <addaction name="startTest2"/>
-    <addaction name="startTest3"/>
+    <addaction name="action"/>
+    <addaction name="action_2"/>
+    <addaction name="action_3"/>
    </widget>
    <addaction name="test"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="startTest1">
+  <action name="action">
    <property name="text">
     <string>Подставить первый тест</string>
    </property>
   </action>
-  <action name="startTest2">
+  <action name="action_2">
    <property name="text">
     <string>Подставить второй тест</string>
    </property>
   </action>
-  <action name="startTest3">
+  <action name="action_3">
    <property name="text">
     <string>Подставить третий тест</string>
    </property>
