@@ -108,27 +108,6 @@ Answer * MainWindow::calculateMinMaxDecision(Alternative **_alternatives)
 }
 
 
-Answer * MainWindow::calculateUsefulnessAccurateInformation(Alternative **_alternatives)
-{
-    Alternative ** alt = _alternatives;
-    double v1 = alt[0]->getValuation();
-    double v2 = alt[1]->getValuation();
-    double v3 = alt[2]->getValuation();
-
-    double indP = (v2 - v3)/(v1 - v3);
-    double u1 = alt[0]->getProbability()*(v1 - v2);
-    double u2 = (1 - alt[0]->getProbability())*(v2 - v3);
-
-    if(alt[0]->getProbability() <= indP)
-    {
-        return new Answer(u1,"");
-    }
-    else
-    {
-        return new Answer(u2,"");
-    }
-
-}
 
 void MainWindow::calculate()
 {
@@ -197,14 +176,12 @@ void MainWindow::calculate()
     Answer * BayesianDecision = calculateBayesianDecision(alernatives);
     //Производим расчет Минимксного решения
     Answer * MinMaxDecision = calculateMinMaxDecision(alernatives);
-    Answer * UsefulnessAccurateInformation = calculateUsefulnessAccurateInformation(alernatives);
-
 
     //Заполняем поле вывода
     ui->plainTextEdit->setPlainText(trUtf8("Было принято решение: ")+BayesianDecision->getDecision());
     ui->plainTextEdit->appendPlainText(trUtf8("Полезность решения: ")+QString::number(BayesianDecision->getUsefulness()));
     ui->plainTextEdit->appendPlainText(trUtf8("Было принято решение: ")+MinMaxDecision->getDecision());
     ui->plainTextEdit->appendPlainText(trUtf8("Полезность решения: ")+QString::number(MinMaxDecision->getUsefulness()));
-    ui->plainTextEdit->appendPlainText(trUtf8("Полезность точной информации: ")+QString::number(UsefulnessAccurateInformation->getUsefulness()));
+
 
 }
