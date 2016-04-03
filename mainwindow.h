@@ -25,8 +25,6 @@ private:
     //Алтернатива Баесовскому решению, выбрать лучшее решение при худших обстаятельствах
     Answer * calculateMinMaxDecision(Alternative ** _alternatives);
 
-    //Полезность точной информации
-    Answer * calculateUsefulnessAccurateInformation(Alternative ** _alternatives);
 private slots:
     void calculate();
     void setTest1();
